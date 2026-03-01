@@ -23,7 +23,6 @@
 				<input type="checkbox" id="openLastProject" />
 			</dd>
 
-
 			<dt class="full">
 				<h3>Visuals</h3>
 			</dt>
@@ -38,7 +37,8 @@
 
 			<dt>
 				<label for="fontScale">Level UI scale</label>
-				<info>This setting will only affect the size of texts and icons in the EDITOR VIEW (including entities custom fields and level custom fields).</info>
+				<info>This setting will only affect the size of texts and icons in the EDITOR VIEW (including entities custom fields
+					and level custom fields).</info>
 			</dt>
 			<dd>
 				<select id="fontScale"></select>
@@ -65,7 +65,8 @@
 
 			<dt>
 				<label for="singleLayerModeIntensity">Single-layer mode intensity</label>
-				<info>When the "single-layer" mode is enabled, this setting defines the intensity of the fading effect applied to other layers.</info>
+				<info>When the "single-layer" mode is enabled, this setting defines the intensity of the fading effect applied to
+					other layers.</info>
 			</dt>
 			<dd>
 				<select id="singleLayerModeIntensity"></select>
@@ -84,7 +85,8 @@
 
 			<dt>
 				<label for="colorBlind">Prefer color-blind colors</label>
-				<info>Enable this option to use color-blind friendly colors by default for newly created entities, enums or intGrid values.</info>
+				<info>Enable this option to use color-blind friendly colors by default for newly created entities, enums or intGrid
+					values.</info>
 			</dt>
 			<dd>
 				<input type="checkbox" id="colorBlind" />
@@ -98,11 +100,28 @@
 				<input type="checkbox" id="blurMask" />
 			</dd>
 
+			<dt>
+				<label for="simplifyWorldView">Simplify World View Render</label>
+				<info>
+					In enabled, levels render in full resolution when viewed in World View. If disabled 1x1 color representation is
+					used
+					for each tile.
+				</info>
+			</dt>
+			<dd>
+				<input type="checkbox" id="simplifyWorldView" />
+			</dd>
 
+			<dt>
+				<label for="simplifiedRenderAlphaThreshold">Simplified Render Alpha Threshold</label>
+				<info>If Simplify World View Render is enabled this value is used to exclude insignificant tiles from rendering.
+					Decrease value if simplified view is missing details and increase if too many small details are included.</info>
+			</dt>
+			<dd>
+				<input type="number" id="simplifiedRenderAlphaThreshold" step="0.01" min="0" max="1" />
+			</dd>
 		</dl>
 	</div>
-
-
 
 	<div class="right">
 		<dl class="form">
@@ -116,7 +135,7 @@
 				<info>This setting affects the zoom in/out speed when using the mouse wheel.</info>
 			</dt>
 			<dd>
-				<input type="text" id="mouseWheelSpeed"/>
+				<input type="text" id="mouseWheelSpeed" />
 				<span>%</span>
 			</dd>
 
@@ -133,12 +152,12 @@
 
 			<dt>
 				<label for="navKeys">Navigation keys layout</label>
-				<info>Navigation keys are used to navigate through the palette of values in a layer. For example, in a Tiles layer, you can navigate through the different tiles using these keys.</info>
+				<info>Navigation keys are used to navigate through the palette of values in a layer. For example, in a Tiles layer,
+					you can navigate through the different tiles using these keys.</info>
 			</dt>
 			<dd>
 				<select id="navKeys"></select>
 			</dd>
-
 
 			<dt class="full">
 				<h3>Advanced options</h3>
@@ -147,12 +166,13 @@
 			<dt>
 				<label for="gpu">Try to use best GPU</label>
 				<info>
-					When enabled, ::app:: will always try to use the best GPU available on your system, resulting in better performances.
+					When enabled, ::app:: will always try to use the best GPU available on your system, resulting in better
+					performances.
 					This might use extra battery life.
 				</info>
 			</dt>
 			<dd>
-				<input type="checkbox" id="gpu"/>
+				<input type="checkbox" id="gpu" />
 				<span>(Recommended)</span>
 			</dd>
 
@@ -161,11 +181,12 @@
 				<info>
 					When enabled, ::app:: will download and install new updates fully automatically.
 					This is strongly RECOMMENDED as many updates contain important bug fixes and new features.
-					But in some case, like when using an outdated importer for your game engine, you may also prefer to stick to a specific ::app:: version.
+					But in some case, like when using an outdated importer for your game engine, you may also prefer to stick to a
+					specific ::app:: version.
 				</info>
 			</dt>
 			<dd>
-				<input type="checkbox" id="autoUpdate"/>
+				<input type="checkbox" id="autoUpdate" />
 				<span>(Recommended)</span>
 				<span class="unsupported">Only supported on Windows.</span>
 			</dd>
@@ -173,17 +194,17 @@
 			<dt>
 				<label>Log file</label>
 				<info>
-					The LOG file is only useful when reporting bugs. You can attach it to an e-mail or when you create an issue on GitHub site.
+					The LOG file is only useful when reporting bugs. You can attach it to an e-mail or when you create an issue on
+					GitHub site.
 					It doesn't contain any sensitive or personal information, except used file paths.
 				</info>
 			</dt>
 			<dd class="log">
 				<span class="logPath"></span>
-				<button class="viewLog gray" > <span class="icon edit"></span></button>
-				<button class="locateLog gray" > <span class="icon locate"></span></button>
+				<button class="viewLog gray"> <span class="icon edit"></span></button>
+				<button class="locateLog gray"> <span class="icon locate"></span></button>
 			</dd>
 		</dl>
 	</div>
 
 </div>
-

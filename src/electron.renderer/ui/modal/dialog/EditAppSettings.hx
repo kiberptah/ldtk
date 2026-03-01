@@ -109,7 +109,7 @@ class EditAppSettings extends ui.modal.Dialog {
 		);
 
 		// Nearby tiles rendering distance
-		var allValues = [0, 1, 1.5, 2];
+		var allValues = [0, 1, 1.5, 2, 4, 8, 16];
 		if( !allValues.contains(settings.v.nearbyTilesRenderingDist) ) {
 			for(v in allValues)
 				if( v>=settings.v.nearbyTilesRenderingDist) {
@@ -150,6 +150,24 @@ class EditAppSettings extends ui.modal.Dialog {
 		// Blur mask
 		var i = Input.linkToHtmlInput(settings.v.blurMask, jForm.find("#blurMask"));
 		i.onChange = ()->onSettingChanged();
+
+		// Simplify World View Render
+		var i = Input.linkToHtmlInput(settings.v.simplifiedRenderInWorldView, jForm.find("#simplifyWorldView"));
+		i.onValueChange = (v) -> {
+			if ( v ) {
+				settings.v.simplifiedRenderInWorldView = v; // Explicitly set the value
+				onSettingChanged();
+			}
+		}
+
+		// Simplified World View Render Alpha Threshold
+		var i = Input.linkToHtmlInput(settings.v.simplifiedRenderAlphaThreshold, jForm.find("#simplifiedRenderAlphaThreshold"));
+		i.onValueChange = (v) -> {
+			if (v != null) {
+				settings.v.simplifiedRenderAlphaThreshold = v;
+				onSettingChanged();
+			}
+		}
 
 		// Fields render
 		var jSelect = jForm.find("#fieldsRender");
