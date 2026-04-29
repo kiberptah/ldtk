@@ -1,5 +1,6 @@
 typedef SelectionBounds = { top:Float, left:Float, right:Float, bottom:Float }
 
+// selection for entities and maybe for something else too
 class GenericLevelElementGroup {
 	static var SELECTION_COLOR = 0xffcc00;
 	var editor(get,never): Editor; inline function get_editor() return Editor.ME;
@@ -29,10 +30,10 @@ class GenericLevelElementGroup {
 		arrow = new h2d.Graphics(renderWrapper);
 		pointLinks = new h2d.Graphics(renderWrapper);
 		selectRender = new h2d.Graphics(renderWrapper);
-		var f = new dn.heaps.filter.PixelOutline(SELECTION_COLOR);
-		f.setPartialKnockout(0.66);
+		var f = new dn.heaps.filter.PixelOutline(SELECTION_COLOR, 0); //second parameter is alpha, by default was 1
+		f.setPartialKnockout(0.5);
 		selectRender.filter = new h2d.filter.Group([
-			f, new dn.heaps.filter.PixelOutline(0x0),
+			f, new dn.heaps.filter.PixelOutline(0x0, 0), //second parameter is alpha, by default was 1
 		]);
 		invalidateBounds();
 	}
