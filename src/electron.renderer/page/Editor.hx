@@ -1710,7 +1710,8 @@ class Editor extends Page {
 			jFloatingOptions.css("margin-left", m+"px");
 		}
 
-		camera.onWorldModeChange(worldMode, usedMouseWheel);
+		if (settings.v.cameraResetOnWorldModeChange)
+			camera.onWorldModeChange(worldMode, usedMouseWheel);
 	}
 
 	public function setGrid(v:Bool, notify=true) {

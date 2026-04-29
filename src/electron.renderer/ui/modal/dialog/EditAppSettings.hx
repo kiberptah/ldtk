@@ -169,6 +169,15 @@ class EditAppSettings extends ui.modal.Dialog {
 			}
 		}
 
+		// camera ResetOnWorldModeChange (e.g. layer change)
+		var i = Input.linkToHtmlInput(settings.v.cameraResetOnWorldModeChange, jForm.find("#cameraResetOnWorldModeChange"));
+		i.onValueChange = (v) -> {
+			if ( v ) {
+				settings.v.cameraResetOnWorldModeChange = v; // Explicitly set the value
+				onSettingChanged();
+			}
+		}
+
 		// Fields render
 		var jSelect = jForm.find("#fieldsRender");
 		jSelect.empty();
