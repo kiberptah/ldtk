@@ -1710,7 +1710,7 @@ class Editor extends Page {
 			jFloatingOptions.css("margin-left", m+"px");
 		}
 
-		if (settings.v.cameraResetOnWorldModeChange)
+		if( settings.v.cameraResetOnWorldModeChange )
 			camera.onWorldModeChange(worldMode, usedMouseWheel);
 	}
 
