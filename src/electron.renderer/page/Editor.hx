@@ -740,7 +740,7 @@ class Editor extends Page {
 				if( ui.Modal.hasAnyOpen() )
 					N.error("Cannot run commands for now");
 				else {
-					var manualCmds = project.customCommands.filter( c->c.when==Manual );
+					var manualCmds = project.getCustomCommmands(Manual);
 					if( manualCmds.length==0 )
 						ui.Notification.warning("The project has no custom command. You can add one in the Project Settings panel (press P)");
 					else {
