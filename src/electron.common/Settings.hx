@@ -43,6 +43,7 @@ typedef AppSettings = {
 	var simplifiedRenderInWorldView : Bool;
 	var simplifiedRenderAlphaThreshold : Float;
 	var cameraResetOnWorldModeChange : Bool;
+	var escExitsWorldMode : Bool;
 }
 
 enum abstract UiState(String) {
@@ -125,6 +126,7 @@ class Settings {
 			simplifiedRenderAlphaThreshold: 0.1,
 			simplifiedRenderInWorldView: true,
 			cameraResetOnWorldModeChange: false,
+			escExitsWorldMode: true,
 		}
 
 		// Load

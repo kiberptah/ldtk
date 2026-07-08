@@ -164,6 +164,10 @@ class EditAppSettings extends ui.modal.Dialog {
 		var i = Input.linkToHtmlInput(settings.v.cameraResetOnWorldModeChange, jForm.find("#cameraResetOnWorldModeChange"));
 		i.onChange = ()->onSettingChanged();
 
+		// Exit world view with ESC
+		var i = Input.linkToHtmlInput(settings.v.escExitsWorldMode, jForm.find("#escExitsWorldMode"));
+		i.onChange = ()->onSettingChanged();
+
 		// Fields render
 		var jSelect = jForm.find("#fieldsRender");
 		jSelect.empty();

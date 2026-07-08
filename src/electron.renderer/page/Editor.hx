@@ -624,8 +624,11 @@ class Editor extends Page {
 					curTool.popInPalette();
 				else if( specialTool!=null )
 					clearSpecialTool();
-				else if( ui.Modal.hasAnyOpen() )
-					ui.Modal.closeLatest();
+				else if( ui.Modal.hasAnyOpen() ) {
+					// The world panel closes on ESC too (leaving world mode), unless disabled in settings
+					if( settings.v.escExitsWorldMode || !Std.isOfType(ui.Modal.getLatestOpen(), ui.modal.panel.WorldPanel) )
+						ui.Modal.closeLatest();
+				}
 				else if( selectionTool.any() )
 					selectionTool.clear();
 
