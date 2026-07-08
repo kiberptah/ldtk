@@ -2361,6 +2361,7 @@ class Editor extends Page {
 				Tool.clearSelectionMemory();
 				clearSpecialTool();
 				updateTool();
+				worldTool.clearLevelSelection();
 
 			case LevelSettingsChanged(l):
 				updateGuide();
@@ -2370,6 +2371,8 @@ class Editor extends Page {
 			case LevelAdded(l):
 
 			case LevelRemoved(l):
+				if( worldTool.selectedLevels.remove(l) )
+					worldRender.updateCurrentHighlight();
 
 			case LevelResized(l):
 
@@ -2461,6 +2464,7 @@ class Editor extends Page {
 
 			case WorldSelected(_):
 				updateWorldList();
+				worldTool.clearLevelSelection();
 				// NOTE: a LevelSelected event always happens right after this one
 
 			case WorldCreated(_):
