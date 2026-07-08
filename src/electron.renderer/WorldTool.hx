@@ -193,8 +193,13 @@ class WorldTool extends dn.Process {
 
 			if( App.ME.isCtrlCmdDown() && !App.ME.isAltDown() ) {
 				// Toggle level in multi-selection
-				if( selectedLevels.contains(clickedLevel) )
+				if( selectedLevels.contains(clickedLevel) ) {
 					selectedLevels.remove(clickedLevel);
+					// The active level is always highlighted: hand the role over to a
+					// remaining selected level so the unselected one loses its border
+					if( editor.curLevel==clickedLevel && selectedLevels.length>0 )
+						editor.selectLevel( selectedLevels[selectedLevels.length-1] );
+				}
 				else {
 					selectedLevels.push(clickedLevel);
 					editor.selectLevel(clickedLevel);
