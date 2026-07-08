@@ -740,9 +740,13 @@ class Editor extends Page {
 				if( ui.Modal.hasAnyOpen() )
 					N.error("Cannot run commands for now");
 				else {
-					var manualCmds = project.customCommands.filter( c->c.when==Manual );
-					if( manualCmds.length==0 )
-						ui.Notification.warning("The project has no custom command. You can add one in the Project Settings panel (press P)");
+					var manualCmds = project.getCustomCommmands(Manual);
+					if( manualCmds.length==0 ) {
+						if( project.customCommands.filter( c->c.when==Manual ).length>0 )
+							ui.Notification.warning("The project has no custom command for this OS. You can check commands OS restrictions in the Project Settings panel (press P)");
+						else
+							ui.Notification.warning("The project has no custom command. You can add one in the Project Settings panel (press P)");
+					}
 					else {
 						if( manualCmds.length==1 )
 							ui.modal.dialog.CommandRunner.runSingleCommand(project, manualCmds[0]);
@@ -1710,7 +1714,7 @@ class Editor extends Page {
 			jFloatingOptions.css("margin-left", m+"px");
 		}
 
-		if (settings.v.cameraResetOnWorldModeChange)
+		if( settings.v.cameraResetOnWorldModeChange )
 			camera.onWorldModeChange(worldMode, usedMouseWheel);
 	}
 

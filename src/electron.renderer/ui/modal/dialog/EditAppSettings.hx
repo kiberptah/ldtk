@@ -151,32 +151,18 @@ class EditAppSettings extends ui.modal.Dialog {
 		var i = Input.linkToHtmlInput(settings.v.blurMask, jForm.find("#blurMask"));
 		i.onChange = ()->onSettingChanged();
 
-		// Simplify World View Render
+		// Simplified world view render
 		var i = Input.linkToHtmlInput(settings.v.simplifiedRenderInWorldView, jForm.find("#simplifyWorldView"));
-		i.onValueChange = (v) -> {
-			if ( v ) {
-				settings.v.simplifiedRenderInWorldView = v; // Explicitly set the value
-				onSettingChanged();
-			}
-		}
+		i.onChange = ()->onSettingChanged();
 
-		// Simplified World View Render Alpha Threshold
+		// Simplified world view render alpha threshold
 		var i = Input.linkToHtmlInput(settings.v.simplifiedRenderAlphaThreshold, jForm.find("#simplifiedRenderAlphaThreshold"));
-		i.onValueChange = (v) -> {
-			if (v != null) {
-				settings.v.simplifiedRenderAlphaThreshold = v;
-				onSettingChanged();
-			}
-		}
+		i.setBounds(0, 1);
+		i.onChange = ()->onSettingChanged();
 
-		// camera ResetOnWorldModeChange (e.g. layer change)
+		// Camera reset on world mode change (eg. layer change)
 		var i = Input.linkToHtmlInput(settings.v.cameraResetOnWorldModeChange, jForm.find("#cameraResetOnWorldModeChange"));
-		i.onValueChange = (v) -> {
-			if ( v ) {
-				settings.v.cameraResetOnWorldModeChange = v; // Explicitly set the value
-				onSettingChanged();
-			}
-		}
+		i.onChange = ()->onSettingChanged();
 
 		// Fields render
 		var jSelect = jForm.find("#fieldsRender");
