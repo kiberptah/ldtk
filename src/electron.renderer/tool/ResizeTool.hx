@@ -9,7 +9,7 @@ typedef ResizeRect = {
 
 class ResizeTool extends Tool<Int> {
 	static var DEFAULT_ALPHA = 0.75;
-	static var HANDLE_RADIUS = 5;
+	static var HANDLE_RADIUS = 3;
 
 	var draggedHandle: Null<RectHandlePos>;
 	var dragOrigin : Coords;
