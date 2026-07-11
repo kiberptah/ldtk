@@ -653,11 +653,11 @@ class WorldRender extends dn.Process {
 	}
 
 	public function updateCurrentHighlight() {
-		final l = editor.curLevel;
+		final l = editor.curLevel; // could be null transiently (eg. during LevelRemoved events)
 		var extraSelection = editor.worldTool==null
 			? []
 			: editor.worldTool.selectedLevels.filter( sl->sl!=l && sl.worldDepth==editor.curWorldDepth );
-		currentHighlight.visible = editor.worldMode && ( l.worldDepth==editor.curWorldDepth || extraSelection.length>0 );
+		currentHighlight.visible = editor.worldMode && ( l!=null && l.worldDepth==editor.curWorldDepth || extraSelection.length>0 );
 		if( !currentHighlight.visible )
 			return;
 
@@ -665,7 +665,7 @@ class WorldRender extends dn.Process {
 		final thick = settings.v.showDetails ? 4 : 1;
 		currentHighlight.lineStyle(thick/camera.adjustedZoom, 0xffcc00);
 		var p = thick*0.5 / camera.adjustedZoom;
-		if( l.worldDepth==editor.curWorldDepth )
+		if( l!=null && l.worldDepth==editor.curWorldDepth )
 			currentHighlight.drawRect(l.worldX-p, l.worldY-p, l.pxWid+p*2, l.pxHei+p*2);
 		for( sl in extraSelection )
 			currentHighlight.drawRect(sl.worldX-p, sl.worldY-p, sl.pxWid+p*2, sl.pxHei+p*2);
