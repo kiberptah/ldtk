@@ -2254,8 +2254,13 @@ class Editor extends Page {
 			case AppSettingsChanged:
 
 			case WorldMode(active):
-				if( !active && curWorldDepth!=curLevel.worldDepth )
-					selectWorldDepth(curLevel.worldDepth);
+				if( !active ) {
+					if( curWorldDepth!=curLevel.worldDepth )
+						selectWorldDepth(curLevel.worldDepth);
+					// Collapse world multi-selection to the level being opened
+					worldTool.selectedLevels = [curLevel];
+					worldRender.updateCurrentHighlight();
+				}
 				updateWorldDepthsUI();
 
 			case WorldDepthSelected(worldDepth):

@@ -206,15 +206,15 @@ class WorldTool extends dn.Process {
 				}
 				editor.worldRender.updateCurrentHighlight();
 			}
-			else if( !selectedLevels.contains(clickedLevel) ) {
+			else if( !worldMode || !selectedLevels.contains(clickedLevel) ) {
 				// Pick level (discards any multi-selection)
 				selectedLevels = [clickedLevel];
 				editor.selectLevel(clickedLevel);
 				editor.worldRender.updateCurrentHighlight();
 			}
-			// NOTE: a plain click on a level already in the multi-selection is resolved on
-			// mouse-up only: dragging moves the whole group, releasing collapses the
-			// selection down to the clicked level.
+			// NOTE: in world mode, a plain click on a level already in the multi-selection is
+			// resolved on mouse-up only: dragging moves the whole group, releasing collapses
+			// the selection down to the clicked level.
 		}
 		else if( worldMode && !project.isBackup() )
 			marqueeOrigin = m;
