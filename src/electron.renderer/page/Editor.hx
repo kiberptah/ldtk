@@ -1387,6 +1387,9 @@ class Editor extends Page {
 			worldRender.invalidateLevelRender(curLevel);
 
 		curLevelId = l.uid;
+		// Outside of world mode, keep the world multi-selection in sync with the active level
+		if( !worldMode && worldTool!=null )
+			worldTool.selectedLevels = [l];
 		ge.emit( LevelSelected(l) );
 		ge.emit( ViewportChanged(true) );
 		saveLastProjectInfos();
